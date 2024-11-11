@@ -1,0 +1,272 @@
+#:import Utils kivy.utils
+#:import MDRaisedButton kivymd.uix.button
+#:import ColorScheme Enum.color_scheme.ColorScheme
+
+<MainScreenView>
+    BoxLayout:
+        spacing: 0
+        padding: 0
+        canvas:
+            Rectangle:
+                size: self.size
+        BoxLayout:
+            orientation:"vertical"
+            canvas:
+                Color:
+                    rgb: Utils.get_color_from_hex(ColorScheme.SecondaryBackground.value)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            BoxLayout:
+                size_hint_y:.1
+                padding:[5,0,0,0]
+                orientation:"vertical"
+                canvas:
+                    Color:
+                        rgb: Utils.get_color_from_hex(ColorScheme.PrimaryBackground.value)
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+
+                BoxLayout:
+                    orientation:'vertical'
+                    Label:
+                        pos: self.parent.pos
+                        size: self.parent.size
+                        text_size: self.size 
+                        color: Utils.get_color_from_hex(ColorScheme.SecondaryBackground.value)
+                        halign:"left"
+                        valign:"middle"
+                        text:"Read My Bible"
+                        bold: True
+                        font_name: 'Impact'  
+                
+                    
+            BoxLayout:
+                size_hint_y:.05    
+            BoxLayout:
+                size_hint_y:0.3
+                padding: [5,5,5,5]
+                orientation:"vertical"
+                GridLayout:
+                    cols:3
+                    size_hint_y:.5
+                    BoxLayout:
+                        id:book_box
+                        #size_hint_y:.5                          
+                        padding: [2,0,2,5]
+                        orientation: "vertical"
+                        
+                        BoxLayout:
+                            size_hint_y: 0.05
+                            padding: [0,10,0,10]
+                            Label:
+                                pos: self.parent.pos
+                                size: self.parent.size
+                                text_size: self.size
+                                color: Utils.get_color_from_hex("#000000")
+                                text:"Book"
+                                font_name: 'Roboto'  
+                        Button:
+                            id: book
+                            size_hint_y: 0.95
+                            on_release: root.book_menu.open()
+                            background_color: (0,0,0,0)
+                            background_normal: ''
+                            canvas.before:
+                                Color:
+                                    #rgba: Utils.get_color_from_hex(ColorScheme.PrimaryBackground.value)
+                                    rgba: Utils.get_color_from_hex("#000000")
+                                Line:
+                                    width: dp(1)
+                                    rectangle: self.x, self.y, self.width, self.height
+                            StackLayout:
+                                pos: self.parent.pos
+                                size: self.parent.size
+                                orientation: 'lr-tb'
+                                Label:
+                                    id: book_label
+                                    text:""
+                                    size_hint_x: 0.85                               
+                                    #color: Utils.get_color_from_hex(ColorScheme.PrimaryBackground.value)
+                                    color: Utils.get_color_from_hex("#000000")
+                                    font_name: 'Roboto'
+                                    text_size:self.size
+                                    halign:'left'
+                                    valign:'middle'
+                                    padding_x:5
+                                BoxLayout:
+                                    size_hint_x:0.1
+                                    padding:[5,5,5,5]
+                                    MDIconButton:
+                                        icon: "arrow-down"
+                                        style: "tonal"
+                                        #theme_bg_color: "Custom"
+                                        #md_bg_color: "brown"
+                                        theme_icon_color: "Custom"
+                                        icon_color: "black"
+                                        pos: self.parent.pos
+                                        pos_hint: {"center_x": .5, "center_y": .5}
+                                        theme_font_size: "Custom"
+                                        font_size: "48sp"
+                                        radius: [self.height / 2, ]
+                                        size_hint: None, None
+                                        size: "84dp", "84dp"
+                                        on_release: root.book_menu.open()
+                                BoxLayout:
+                                    size_hint_x:0.05
+                    BoxLayout:
+                        id:chapter_box
+                        #size_hint_y:.5                          
+                        padding: [2,0,2,5]
+                        orientation: "vertical"
+                        
+                        BoxLayout:
+                            size_hint_y: 0.05
+                            padding: [0,10,0,10]
+                            Label:
+                                pos: self.parent.pos
+                                size: self.parent.size
+                                text_size: self.size
+                                color: Utils.get_color_from_hex("#000000")
+                                text:"Chapter"
+                                font_name: 'Roboto'  
+                        Button:
+                            id: chapter
+                            size_hint_y: 0.95
+                            on_release: root.chapter_menu.open()
+                            disabled: 'True'
+                            background_color: (0,0,0,0)
+                            background_normal: ''
+                            canvas.before:
+                                Color:
+                                    #rgba: Utils.get_color_from_hex(ColorScheme.PrimaryBackground.value)
+                                    rgba: Utils.get_color_from_hex("#000000")
+                                Line:
+                                    width: dp(1)
+                                    rectangle: self.x, self.y, self.width, self.height
+                            StackLayout:
+                                pos: self.parent.pos
+                                size: self.parent.size
+                                orientation: 'lr-tb'
+                                Label:
+                                    id: chapter_label
+                                    text:""
+                                    size_hint_x: 0.85                               
+                                    #color: Utils.get_color_from_hex(ColorScheme.PrimaryBackground.value)
+                                    color: Utils.get_color_from_hex("#000000")
+                                    font_name: 'Roboto'
+                                    text_size:self.size
+                                    halign:'left'
+                                    valign:'middle'
+                                    padding_x:5
+                                BoxLayout:
+                                    size_hint_x:0.1
+                                    padding:[5,5,5,5]
+                                    MDIconButton:
+                                        icon: "arrow-down"
+                                        style: "tonal"
+                                        #theme_bg_color: "Custom"
+                                        #md_bg_color: "brown"
+                                        theme_icon_color: "Custom"
+                                        icon_color: "black"
+                                        pos: self.parent.pos
+                                        pos_hint: {"center_x": .5, "center_y": .5}
+                                        theme_font_size: "Custom"
+                                        font_size: "48sp"
+                                        radius: [self.height / 2, ]
+                                        size_hint: None, None
+                                        size: "84dp", "84dp"
+                                        on_release: root.chapter_menu.open()
+                                BoxLayout:
+                                    size_hint_x:0.05
+                    BoxLayout:
+                        id:verse_box
+                        #size_hint_y:.5                          
+                        padding: [2,0,2,5]
+                        orientation: "vertical"
+                        
+                        BoxLayout:
+                            size_hint_y: 0.05
+                            padding: [0,10,0,10]
+                            Label:
+                                pos: self.parent.pos
+                                size: self.parent.size
+                                text_size: self.size
+                                color: Utils.get_color_from_hex("#000000")
+                                text:"Verse"
+                                font_name: 'Roboto'  
+                        Button:
+                            id: verse
+                            disabled: 'True'
+                            size_hint_y: 0.95
+                            on_release: root.verse_menu.open()
+                            background_color: (0,0,0,0)
+                            background_normal: ''
+                            canvas.before:
+                                Color:
+                                    #rgba: Utils.get_color_from_hex(ColorScheme.PrimaryBackground.value)
+                                    rgba: Utils.get_color_from_hex("#000000")
+                                Line:
+                                    width: dp(1)
+                                    rectangle: self.x, self.y, self.width, self.height
+                            StackLayout:
+                                pos: self.parent.pos
+                                size: self.parent.size
+                                orientation: 'lr-tb'
+                                Label:
+                                    id: verse_label
+                                    text:""
+                                    size_hint_x: 0.85                               
+                                    #color: Utils.get_color_from_hex(ColorScheme.PrimaryBackground.value)
+                                    color: Utils.get_color_from_hex("#000000")
+                                    font_name: 'Roboto'
+                                    text_size:self.size
+                                    halign:'left'
+                                    valign:'middle'
+                                    padding_x:5
+                                BoxLayout:
+                                    size_hint_x:0.1
+                                    padding:[5,5,5,5]
+                                    MDIconButton:
+                                        icon: "arrow-down"
+                                        style: "tonal"
+                                        #theme_bg_color: "Custom"
+                                        #md_bg_color: "brown"
+                                        theme_icon_color: "Custom"
+                                        icon_color: "black"
+                                        pos: self.parent.pos
+                                        pos_hint: {"center_x": .5, "center_y": .5}
+                                        theme_font_size: "Custom"
+                                        font_size: "48sp"
+                                        radius: [self.height / 2, ]
+                                        size_hint: None, None
+                                        size: "84dp", "84dp"
+                                        on_release: root.verse_menu.open()
+                                BoxLayout:
+                                    size_hint_x:0.05            
+                BoxLayout:
+                    size_hint_y: .5
+
+            BoxLayout:
+                size_hint_y:.3
+
+            BoxLayout:
+                size_hint_y:.15
+            BoxLayout:
+                size_hint_y: .1
+                canvas:
+                    Color:
+                        rgb: Utils.get_color_from_hex(ColorScheme.PrimaryBackground.value)
+                    Rectangle:
+                        size: self.size
+
+                FloatLayout:
+                    MDRaisedButton:
+                        pos_hint:{'center_x': 0.93, 'center_y': 0.5}
+                        style:"elevated"
+                        md_bg_color: ColorScheme.SecondaryBackground.value
+                        theme_text_color:"ContrastParentBackground"
+                        text: "Submit"
+                        on_press: root.controller.on_submit()
